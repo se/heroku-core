@@ -20,9 +20,9 @@ cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
 source $BP_DIR/lib/utils
 
 echo "Installing the dependencies"
-apt_install libunwind8 gettext nodejs npm
-
-install_dependencies
+apt_install nodejs npm 
+echo "Install Path : $PATH"
+apt_install libunwind8 gettext
 
 echo "Installing dotnet"
 install_dotnet $BUILD_DIR 

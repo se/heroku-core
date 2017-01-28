@@ -20,10 +20,6 @@ function indent() {
   esac
 }
 
-function install_dependencies(){
-  npm install -g bower
-}
-
 function apt_install(){
   echo "Install package"
 
