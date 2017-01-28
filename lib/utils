@@ -21,7 +21,7 @@ function indent() {
 }
 
 function install_dependencies(){
-  echo "No dependencies."
+  npm install -g bower
 }
 
 function apt_install(){
