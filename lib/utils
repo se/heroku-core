@@ -21,6 +21,7 @@ function indent() {
 }
 
 function install_dependencies(){
+  echo "No dependencies."
 }
 
 function apt_install(){
