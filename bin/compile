@@ -93,9 +93,9 @@ CORE_VERSION_FIRST="$CORE_VERSION"
 if [[ "${CORE_VERSION}" == "latest" ]]; then
 	CORE_VERSION_FIRST="Latest"
 	${CORE_DOWNLOAD_LOCATION:="https://go.microsoft.com/fwlink/?LinkID=834989"}
+else
+	${CORE_DOWNLOAD_LOCATION:="https://dotnetcli.blob.core.windows.net/dotnet/${CORE_CHANNEL}/Binaries/${CORE_VERSION_FIRST}/dotnet-dev-ubuntu-x64.${CORE_VERSION}.tar.gz"}
 fi
-
-: ${CORE_DOWNLOAD_LOCATION:="https://dotnetcli.blob.core.windows.net/dotnet/${CORE_CHANNEL}/Binaries/${CORE_VERSION_FIRST}/dotnet-dev-ubuntu-x64.${CORE_VERSION}.tar.gz"}
 
 echo "Installing the dependencies"
 apt_install libunwind8 gettext
