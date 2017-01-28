@@ -21,13 +21,7 @@ function indent() {
 }
 
 function install_dependencies(){
-  echo "Installing Nodejs packages (Bower etc.)"
-  if [ -n "$(find $1 -maxdepth 5 -iname bower.json)" ]; then
-    echo "Installing bower"
-    npm install -g bower
-  else
-    echo "No need to install bower. There is no bower file."
-  fi
+  npm install -g bower
 }
 
 function apt_install(){

@@ -31,12 +31,15 @@ export PATH="/app/dotnet:${PATH}"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
 
 cd $BUILD_DIR
+echo "Restoring packages"
 dotnet restore
 
-echo "publish"
-PROJECT_FILE=$(find ${BUILD_DIR} -maxdepth 5 -iname project.json | head -1)
-PROJECT_NAME=$(basename $(dirname $PROJECT_FILE))
-dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/heroku_output --configuration Release
+# echo "publish"
+# PROJECT_FILE=$(find ${BUILD_DIR} -maxdepth 5 -iname project.json | head -1)
+# PROJECT_NAME=$(basename $(dirname $PROJECT_FILE))
+# dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/heroku_output --configuration Release
+echo "Runing"
+dotnet run
 
 cat << EOT >> ${BUILD_DIR}/Procfile
 web: cd \$HOME/heroku_output && dotnet "./${PROJECT_NAME}.dll" --server.urls http://+:\$PORT
