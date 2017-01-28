@@ -92,6 +92,7 @@ CORE_VERSION_FIRST="$CORE_VERSION"
 
 if [[ "${CORE_VERSION}" == "latest" ]]; then
 	CORE_VERSION_FIRST="Latest"
+	${CORE_DOWNLOAD_LOCATION:="https://go.microsoft.com/fwlink/?LinkID=834989"}
 fi
 
 : ${CORE_DOWNLOAD_LOCATION:="https://dotnetcli.blob.core.windows.net/dotnet/${CORE_CHANNEL}/Binaries/${CORE_VERSION_FIRST}/dotnet-dev-ubuntu-x64.${CORE_VERSION}.tar.gz"}
