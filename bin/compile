@@ -19,12 +19,21 @@ cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
 ### Load dependencies
 source $BP_DIR/lib/utils
 
-echo "Installing the dependencies"
+C_YELLOW='\033[0;33m'
+C_NC='\033[0m' # No Color
+
+echo "${C_YELLOW}Installing the dependencies${C_NC}"
 apt_install libunwind8 gettext nodejs
 
-echo "Installing Nodejs packages"
+echo "${C_YELLOW}Installing Nodejs packages (Bower etc.)${C_NC}"
+if [ -n "$(find $1 -maxdepth 5 -iname bower.json)" ]; then
+  echo "Installing bower"
+  npm install -g bower
+else
+  echo "${C_YELLOW}No need to install bower. There is no bower file.${C_NC}"
+fi
 
-echo "Installing dotnet"
+echo "${C_YELLOW}Installing dotnet${C_NC}"
 install_dotnet $BUILD_DIR 
 
 export PATH="/app/dotnet:${PATH}"
