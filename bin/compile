@@ -86,11 +86,11 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 	# Install .NET Core
 
 	CORE_VERSION="$CORE_VERSION"
-	CORE_DOWNLOAD_LOCATION="https://go.microsoft.com/fwlink/?linkid=847089"
+	CORE_DOWNLOAD_LOCATION="https://go.microsoft.com/fwlink/?linkid=847105"
 
 	echo "Installing the dependencies"
 
-	apt_install libunwind8 libstdc++6 gettext
+	apt_install curl libunwind8 gettext
 	# apt-get install cmake llvm-3.5 clang-3.5 lldb-3.6 lldb-3.6-dev libunwind8 libunwind8-dev gettext libicu-dev liblttng-ust-dev libcurl4-openssl-dev libssl-dev uuid-dev
 
 	mkdir -p ${BUILD_DIR}/dotnet
@@ -104,7 +104,7 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 	echo "Download complete."
 	echo "Path is : ${DL_FILE}"
 	echo "Extracting downloaded files"
-	tar xf "${DL_FILE}" -C ${BUILD_DIR}/dotnet
+	tar zxf "${DL_FILE}" -C ${BUILD_DIR}/dotnet
 	echo "Done!"
 else
 	echo "Dotnet already installed."
