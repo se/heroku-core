@@ -113,7 +113,7 @@ else
 fi
 ## Check if already installed
 
-export PATH="${APP_DIR}/dotnet:${PATH}"
+export PATH="${APP_DIR}/dotnet/dotnet:${PATH}"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
 echo "All Path is : ${PATH}" 
 echo "Lib Path is : ${LD_LIBRARY_PATH}" 
