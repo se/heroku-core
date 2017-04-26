@@ -124,7 +124,7 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 
 	echo "Installing the dependencies"
 
-	apt_install libunwind8 gettext
+	apt_install libunwind libssl libcurl libicu gettext
 
 	mkdir -p ${CACHE_DIR}/dotnet
 
@@ -132,13 +132,13 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 
 	echo "Downloading .NET CORE ${CORE_VERSION} from ${CORE_DOWNLOAD_LOCATION} to ${DL_FILE}"
 	# dotnet-install.sh using `ldconfig` which search pkg in `/lib` or `/usr/lib`. So I change it to binaries.
-	curl -sSL ${CORE_SCRIPT_LOCATION} | bash /dev/stdin --version ${CORE_VERSION} --install-dir ${BUILD_DIR}/dotnet
-	#curl -o "${DL_FILE}" -# "${CORE_DOWNLOAD_LOCATION}" -L
-	#echo "Download complete."
-	#echo "Path is : ${DL_FILE}"
-	#echo "Extracting downloaded files"
-	#tar xf "${DL_FILE}" -C ${CACHE_DIR}/dotnet
-	#echo "Done!"
+	#curl -sSL ${CORE_SCRIPT_LOCATION} | bash /dev/stdin --version ${CORE_VERSION} --install-dir ${BUILD_DIR}/dotnet
+	curl -o "${DL_FILE}" -# "${CORE_DOWNLOAD_LOCATION}" -L
+	echo "Download complete."
+	echo "Path is : ${DL_FILE}"
+	echo "Extracting downloaded files"
+	tar xf "${DL_FILE}" -C ${CACHE_DIR}/dotnet
+	echo "Done!"
 
 	ln -s ${CACHE_DIR}/dotnet "${APP_DIR}"
 else
