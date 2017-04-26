@@ -124,7 +124,7 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 
 	echo "Installing the dependencies"
 
-	#### apt_install libunwind8 gettext
+	apt_install libunwind8 gettext
 
 	mkdir -p ${CACHE_DIR}/dotnet
 
