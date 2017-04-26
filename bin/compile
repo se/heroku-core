@@ -117,7 +117,7 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 
 	CORE_VERSION_FIRST="$CORE_VERSION"
 	# This is the latest one : .NET Core 1.1.1
-	CORE_DOWNLOAD_LOCATION="https://go.microsoft.com/fwlink/?linkid=847090"
+	CORE_DOWNLOAD_LOCATION="https://go.microsoft.com/fwlink/?linkid=847089"
 	if [[ "${CORE_VERSION}" != "latest" ]]; then
 		CORE_DOWNLOAD_LOCATION="https://dotnetcli.blob.core.windows.net/dotnet/${CORE_CHANNEL}/Binaries/${CORE_VERSION_FIRST}/dotnet-dev-ubuntu-x64.${CORE_VERSION}.tar.gz"
 	fi
