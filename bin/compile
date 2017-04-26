@@ -124,7 +124,7 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 
 	echo "Installing the dependencies"
 
-	apt_install libunwind libssl libcurl libicu gettext
+	apt-get install libunwind libssl libcurl libicu gettext
 
 	mkdir -p ${CACHE_DIR}/dotnet
 
