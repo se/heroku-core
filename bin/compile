@@ -3,7 +3,7 @@
 
 # fail fast
 set -e
-STACK=cedar-14
+#STACK=cedar-14
 if [ "${STACK}" != "cedar-14" ]; then
 	echo "Stack ${STACK} not supported." && exit 1
 else
