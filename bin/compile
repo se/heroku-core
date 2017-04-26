@@ -3,11 +3,24 @@
 
 # fail fast
 set -e
-#STACK=cedar-14
-if [ "${STACK}" != "cedar-14" ]; then
-	echo "Stack ${STACK} not supported." && exit 1
+
+: ${CORE_VERSION:="latest"}
+: ${CORE_SCRIPT_LOCATION:="https://dot.net/v1/dotnet-install.sh"}
+: ${NODE_VERSION:="4.4.4"}
+: ${CORE_VERSION:="latest"}
+: ${CORE_CHANNEL:="preview"}
+
+CORE_VERSION="$CORE_VERSION"
+CORE_DOWNLOAD_LOCATION=""
+
+if [ "${STACK}" == "cedar-14" ]; then
+	echo "Stack ${STACK} is Ubuntu 14.04"
+	CORE_DOWNLOAD_LOCATION="https://go.microsoft.com/fwlink/?linkid=847106"
+elif [ "${STACK}" == "heroku-16" ]; then
+	echo "Stack ${STACK} is Ubuntu 16.04"
+	CORE_DOWNLOAD_LOCATION="https://go.microsoft.com/fwlink/?linkid=847089"
 else
-	echo "Stack is done! $STACK"
+	echo "This stack $STACK is not supported. Please create a issue https://github.com/se/heroku-core/issues/new ."
 fi
 
 if [ "$1" == "" ]; then
@@ -40,12 +53,6 @@ echo "Buildpack dir is : ${BUILDPACK_DIR}"
 source $BUILDPACK_DIR/bin/util
 
 export_env_dir ${ENV_DIR}
-
-: ${CORE_VERSION:="latest"}
-: ${CORE_SCRIPT_LOCATION:="https://dot.net/v1/dotnet-install.sh"}
-: ${NODE_VERSION:="4.4.4"}
-: ${CORE_VERSION:="latest"}
-: ${CORE_CHANNEL:="preview"}
 
 if [ -n "$BUILD_DEBUG" ]; then
 	CORE_CONFIGURATION="Debug"
@@ -84,9 +91,6 @@ fi
 ## Check if already installed.
 if [ ! -d "$CACHE_DIR/dotnet" ]; then
 	# Install .NET Core
-
-	CORE_VERSION="$CORE_VERSION"
-	CORE_DOWNLOAD_LOCATION="https://go.microsoft.com/fwlink/?linkid=847106"
 
 	echo "Installing the dependencies"
 
