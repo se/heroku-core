@@ -90,7 +90,7 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 
 	echo "Installing the dependencies"
 
-	apt_install curl libunwind8 gettext
+	apt_install libunwind8 gettext
 	# apt-get install cmake llvm-3.5 clang-3.5 lldb-3.6 lldb-3.6-dev libunwind8 libunwind8-dev gettext libicu-dev liblttng-ust-dev libcurl4-openssl-dev libssl-dev uuid-dev
 
 	mkdir -p ${BUILD_DIR}/dotnet
@@ -111,8 +111,11 @@ else
 fi
 ## Check if already installed
 
+ln -s ${BUILD_DIR}/dotnet/dotnet ${APP_DIR}
+
 export PATH="${BUILD_DIR}/dotnet:${PATH}"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
+
 echo "All Path is : ${PATH}" 
 echo "Lib Path is : ${LD_LIBRARY_PATH}" 
 echo "Paths are exported."
