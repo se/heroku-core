@@ -104,16 +104,14 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 	echo "Download complete."
 	echo "Path is : ${DL_FILE}"
 	echo "Extracting downloaded files"
-	tar xf "${DL_FILE}" -C ${BUILD_DIR}
+	tar xf "${DL_FILE}" -C ${BUILD_DIR}/dotnet
 	echo "Done!"
-
-	ln -s ${BUILD_DIR}/dotnet "${APP_DIR}"
 else
 	echo "Dotnet already installed."
 fi
 ## Check if already installed
 
-export PATH="${APP_DIR}/dotnet:${PATH}"
+export PATH="${BUILD_DIR}/dotnet:${PATH}"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
 echo "All Path is : ${PATH}" 
 echo "Lib Path is : ${LD_LIBRARY_PATH}" 
