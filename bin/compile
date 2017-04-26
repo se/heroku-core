@@ -126,7 +126,7 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 
 	#### apt_install libunwind8 gettext
 
-	mkdir -p ${BUILD_DIR}/dotnet
+	mkdir -p ${CACHE_DIR}/dotnet
 
 	DL_FILE="${CACHE_DIR}/dotnet.tar.gz"
 
