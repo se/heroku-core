@@ -3,7 +3,7 @@
 
 # fail fast
 set -e
-# STACK=cedar-14
+STACK=cedar-14
 if [ "${STACK}" != "cedar-14" ]; then
 	echo "Stack ${STACK} not supported." && exit 1
 else
@@ -137,7 +137,7 @@ if [ ! -d "$CACHE_DIR/dotnet" ]; then
 	echo "Download complete."
 	echo "Path is : ${DL_FILE}"
 	echo "Extracting downloaded files"
-	tar xf "${DL_FILE}" -C ${CACHE_DIR}/dotnet
+	tar xz "${DL_FILE}" -C ${CACHE_DIR}/dotnet
 	echo "Done!"
 
 	ln -s ${CACHE_DIR}/dotnet "${APP_DIR}"
