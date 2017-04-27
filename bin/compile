@@ -19,6 +19,7 @@ elif [ "${STACK}" == "heroku-16" ]; then
 	CORE_DOWNLOAD_LOCATION="https://go.microsoft.com/fwlink/?linkid=847089"
 else
 	echo "This stack $STACK is not supported. Please create a issue https://github.com/se/heroku-core/issues/new ."
+	exit 1
 fi
 
 if [ "$1" == "" ]; then
@@ -89,11 +90,15 @@ fi
 echo "Detecting Installed .Net Core"
 
 DOTNET_PATH=`which dotnet`
+
+echo "Detected Patch is $DOTNET_PATH"
+
 DOTNET_VERSION=""
 
 echo $DOTNET_PATH
 
 if [ -n "$DOTNET_PATH" ]; then
+	echo "Trying to get version."
     DOTNET_VERSION=`dotnet --version`
     echo "Dotnet found and version is $DOTNET_VERSION"
 else
