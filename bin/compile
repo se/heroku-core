@@ -89,7 +89,7 @@ fi
 
 echo "Detecting Installed .Net Core"
 NULL_VALUE=""
-DOTNET_PATH="$(which dotnet || NULL_VALUE)"
+DOTNET_PATH="$(which dotnet || $NULL_VALUE)"
 
 echo "Detected Patch is $DOTNET_PATH"
 
