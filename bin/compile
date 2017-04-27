@@ -86,8 +86,11 @@ then
 	fi
 fi
 
+echo "Detecting Installed .Net Core"
+
 DOTNET_PATH=`which dotnet`
 DOTNET_VERSION=""
+
 echo $DOTNET_PATH
 
 if [ -n "$DOTNET_PATH" ]; then
