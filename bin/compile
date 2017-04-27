@@ -4,13 +4,11 @@
 # fail fast
 set -e
 
-: ${CORE_VERSION:="latest"}
+: ${CORE_VERSION:="1.0.3"}
 : ${CORE_SCRIPT_LOCATION:="https://dot.net/v1/dotnet-install.sh"}
 : ${NODE_VERSION:="4.4.4"}
-: ${CORE_VERSION:="latest"}
 : ${CORE_CHANNEL:="preview"}
 
-CORE_VERSION="$CORE_VERSION"
 CORE_DOWNLOAD_LOCATION=""
 
 if [ "${STACK}" == "cedar-14" ]; then
@@ -88,8 +86,24 @@ then
 	fi
 fi
 
+DOTNET_PATH=`which dotnet`
+DOTNET_VERSION=""
+echo $DOTNET_PATH
+
+if [ -n "$DOTNET_PATH" ]; then
+    DOTNET_VERSION=`dotnet --version`
+    echo "Dotnet found and version is $DOTNET_VERSION"
+else
+    echo "Dotnet not found."
+fi
+
 ## Check if already installed.
-if [ ! -d "$CACHE_DIR/dotnet" ]; then
+if [ "$DOTNET_VERSION" != "$CORE_VERSION" ]; then
+
+	if [ -n "$DOTNET_VERSION" ]; then
+		echo "Your .Net Core version is old and will be upgrade from ${DOTNET_VERSION} SDK to ${CORE_VERSION} SDK."
+	fi
+
 	# Install .NET Core
 
 	echo "Installing the dependencies"
